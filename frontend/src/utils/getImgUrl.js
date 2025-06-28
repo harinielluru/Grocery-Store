@@ -1,5 +1,4 @@
-function getImgUrl (name) {
-    return new URL(`../assets/products/${name}`, import.meta.url)
-}
-
-export {getImgUrl}
+// src/utils/getImgUrl.js
+export const getImgUrl = (filename) => {
+  return `http://localhost:5000/images/${filename}`;
+};

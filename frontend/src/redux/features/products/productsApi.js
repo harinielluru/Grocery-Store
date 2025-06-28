@@ -5,7 +5,7 @@ const  baseQuery = fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api/products`,
     credentials: 'include',
     prepareHeaders: (Headers) => {
-        const token =  localStorage.getItem('token');
+        const token =  localStorage.getItem('adminToken');
         if(token) {
             Headers.set('Authorization', `Bearer ${token}`);
         }

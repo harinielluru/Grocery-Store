@@ -2,7 +2,7 @@ const Product = require("./product.model");
 
 const postAProduct = async (req, res) => {
     try {
-        const newProduct = await Product({...req.body});
+        const newProduct = new Product({ ...req.body }); // ✅ correct
         await newProduct.save();
         res.status(200).send({message: "Product posted successfully", product: newProduct})
     } catch (error) {

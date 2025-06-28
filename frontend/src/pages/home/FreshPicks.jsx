@@ -12,8 +12,9 @@ const FreshPicks = () => {
     const filteredProducts = products.filter(product => product.category === "freshpicks");
 
     return (
-        <div className='mb-10'>
-            <h3 className='text-2xl font-semibold mb-4 text-blue-500'>Fresh Picks</h3>
+        <section className="bg-green-50 py-10 px-4 rounded-xl shadow-md mb-10">
+            <h3 className="text-2xl font-semibold mb-6 text-green-700">Fresh Picks</h3>
+
             {filteredProducts.length > 0 ? (
                 <div className="relative">
                     <Swiper
@@ -37,14 +38,16 @@ const FreshPicks = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <button className="fresh-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-full shadow-md z-10">❮</button>
-                    <button className="fresh-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-full shadow-md z-10">❯</button>
+
+                    <button className="fresh-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-full shadow-md z-10">❮</button>
+                    <button className="fresh-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-full shadow-md z-10">❯</button>
                 </div>
             ) : (
                 <p className="text-gray-500">No products available in this category.</p>
             )}
-        </div>
+        </section>
     );
 };
 
 export default FreshPicks;
+

@@ -27,13 +27,12 @@ const Banner = () => {
             </span>
             
             <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-6">
-              Fresh Food, <span className="text-blue-600">Quick Delivery</span>
-            </h1>
-            
-            <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              ShopSmart delivers premium groceries straight to your doorstep. Enjoy farm-fresh produce, artisanal goods, and everyday essentials with just a few taps.
-            </p>
-            
+                From Farm to <br></br><span className="text-blue-600">Front Door</span>
+              </h1>
+
+              <p className="text-lg text-gray-600 mb-8 max-w-lg">
+                Discover freshness redefined — ShopSmart brings organic produce, gourmet items, and daily essentials straight to your home, fast and hassle-free.
+              </p>
             {/* <div className="flex flex-col sm:flex-row gap-4">
               <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Shop Now

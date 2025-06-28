@@ -1,17 +1,24 @@
+require('dotenv').config();
 const express = require("express");
-const app = express();
 const cors = require("cors");
-
+const path = require("path");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 5000;
-require('dotenv').config()
 
+// ✅ Then initialize
+const app = express();
+const port = process.env.PORT || 5000;
+require('dotenv').config();
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 // middleware
 app.use(express.json());
 app.use(cors({
     origin: ['http://localhost:5173', 'https://product-app-frontend-tau.vercel.app'],
     credentials: true
 }))
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
 
 // routes
 const productRoutes = require('./src/products/product.route');
@@ -30,6 +37,12 @@ async function main() {
     res.send("Shop Smart Server is running!");
   });
 }
+const User = require('./src/users/user.model');
+
+mongoose.connection.once('open', async () => {
+  const adminUser = await User.findOne({ username: 'admin@shop.com' });
+  console.log('Admin user from DB:', adminUser);
+});
 
 main().then(() => console.log("Mongodb connect successfully!")).catch(err => console.log(err,'wow'));
 

@@ -18,6 +18,8 @@ const AdminLogin = () => {
 
       const onSubmit = async (data) => {
         // console.log(data)
+        console.log("Form submitted:", data);
+
         try {
            const response =  await axios.post(`${getBaseUrl()}/api/auth/admin`, data, {
                 headers: {
@@ -27,7 +29,7 @@ const AdminLogin = () => {
            const auth = response.data;
         //    console.log(auth)
             if(auth.token) {
-                localStorage.setItem('token', auth.token);
+                localStorage.setItem('adminToken', auth.token);
                 setTimeout(() => {
                     localStorage.removeItem('token')
                     alert('Token has been expired!, Please login again.');

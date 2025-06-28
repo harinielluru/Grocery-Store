@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     },
     trending: {
         type: Boolean,
-        required: true,
+        required: false,
     },
     coverImage: {
         type: String,

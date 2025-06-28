@@ -11,31 +11,38 @@ const AddProduct = () => {
     const [addProduct, {isLoading, isError}] = useAddProductMutation()
     const [imageFileName, setimageFileName] = useState('')
     const onSubmit = async (data) => {
- 
-        const newProductData = {
-            ...data,
-            coverImage: imageFileName
-        }
-        try {
-            await addProduct(newProductData).unwrap();
-            Swal.fire({
-                title: "Product added",
-                text: "Your product is uploaded successfully!",
-                icon: "success",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, It's Okay!"
-              });
-              reset();
-              setimageFileName('')
-              setimageFile(null);
-        } catch (error) {
-            console.error(error);
-            alert("Failed to add product. Please try again.")   
-        }
-      
+  const newProductData = {
+      ...data,
+      coverImage: imageFileName,
+      trending: data.trending || false // ✅ move this line here
+    };
+    console.log("Submitting: ", newProductData);
+
+    try {
+      await addProduct(newProductData).unwrap();
+      Swal.fire({
+        title: "Product added",
+        text: "Your product is uploaded successfully!",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, It's Okay!"
+      });
+      reset();
+      setimageFileName('');
+      setimageFile(null);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to add product. Please try again.");
     }
+  };
+
+      // const newProductData = {
+      //   ...data,
+      //   coverImage: imageFileName,
+      //   trending: data.trending || false // fallback if not checked
+      // };
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -84,7 +91,7 @@ const AddProduct = () => {
         />
 
         {/* Trending Checkbox */}
-        {/* <div className="mb-4">
+        {<div className="mb-4">
           <label className="inline-flex items-center">
             <input
               type="checkbox"
@@ -93,7 +100,7 @@ const AddProduct = () => {
             />
             <span className="ml-2 text-sm font-semibold text-gray-700">Trending</span>
           </label>
-        </div> */}
+        </div> }
 
         {/* Old Price */}
         <InputField
